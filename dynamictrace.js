@@ -1,7 +1,7 @@
 // imports
 var fs = require('fs'); // file writer
 
-var root = "https://www.americancampus.com/student-apartments/tx/college-station/u-centre-at-northgate/floor-plans#/"; 
+var root = "https://www.zillow.com/homes/for_rent/"; 
 
 const puppeteer = require('puppeteer');
 
@@ -13,7 +13,7 @@ const puppeteer = require('puppeteer');
 
     // extracting information from code
     let properties = await page.evaluate(() => {
-        const pgTag = document.querySelector(".property-price");
+        const pgTag = document.querySelector(".search-title");
         return pgTag.textContent;
     });
 
