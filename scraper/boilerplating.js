@@ -5,11 +5,13 @@
 */ 
 
 // imports
+
 const fs = require('fs'); // file writer
 const puppeteer = require('puppeteer');
 const robotsParser = require('robots-parser');
 
-var url = "insert url here"; 
+//added by Brandon to scrape
+var url = "https://www.riseatnorthgate.com/floorplans/"; 
 
 // DON'T CHANGE
 function writeFile(data) {
@@ -64,14 +66,16 @@ async function scrapeHousingPrices() {
     // opens page up
     await page.goto(url, { waitUntil: 'networkidle2' });
 
-    // Edit code here:
-
-
-
-
-
+    // Image webscraping - Brandon:
+    // The Rise Floorplans
+    const floorPlans = await page.$$eval('.fp-block', floorPlans => floorPlans.map(floorplan => floorplan.innerHTML ));
+    console.log(floorPlans);
 
     
+
+
+
+
     
     // Get the timestamp of when it was scraped, DO NOT TOUCH
     var today = new Date();
