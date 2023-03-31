@@ -69,8 +69,11 @@ async function scrapeHousingPrices() {
     // Image webscraping - Brandon:
     // The Rise Floorplans
     const floorPlans = await page.$$eval('.fp-block', floorPlans => floorPlans.map(floorplan => floorplan.innerHTML ));
-    console.log(floorPlans);
-
+    const imageElement = await page.$$eval('.fp-block', (div) => {
+        const img = await div.querySelector('img');
+        return img;
+      });
+    console.log(imageElement)
     
 
 
